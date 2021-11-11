@@ -1,0 +1,21 @@
+Esercizio 1: esempio di una possibile implementazione di un thread pool
+threadF.c contiene la funzione di gestione delle richieste
+threadpool.[ch] contiene una implementazione del pool di threads
+toup_server.c contiene il codice del server ed il manager thread (thread main)
+
+Esercizio 2: schema di soluzione
+Come soluzione dell'Esercizio 2, si puo' modificare il codice dell'Esercizio 1
+cambiando il codice in threadF.c. Tra gli argomenti per la funzione threadF
+viene passato un ulteriore argomento, il descrittore di scrittura di una pipe
+(unica) condivisa con il manager thread (cioe' il thread main). Tale pipe serve
+a notificare che la richiesta e' stata servita dalla funzione threadF e che
+sostanzialmente un Worker thread e' libero. Chiamiamo questa pipe, nella quale
+vengono inseriti i descrittori delle connessioni, pipe_request.
+Il manager thread "ascolta" la pipe dei segnali, la pipe_request, il listen
+socket e tutte le connessioni aperte. All'arrivo di una richiesta il
+manager thread toglie dal readset della select i descrittori 'ready' e li passa
+ai Worker threads tramite la coda del pool. Li riaggiungerà al readset solo
+quando la richiesta e' stata servita dalla threadF, e cioe' quando legge dalla
+pipe_request i descrittori. Se la funzione threadF legge 0 (connessione chiusa),
+tale descrittore non verrà inserito nella pipe_request e la threadF provvedera'
+a fare la close lato server.

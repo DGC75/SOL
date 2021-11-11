@@ -1,0 +1,18 @@
+Esercizio 1 (bcserver). Il server è realizzato in due versioni:
+- bcserver.c
+- bcserver_v2.c
+
+Nella seconda versione (_v2) il processo che esegue la calcolatrice bc viene
+connesso direttamente alla socket aperta dal client.
+
+Il client da usare per l'eseguibile bcserver e' quello generato dalla
+compilazione del programma bcclient.c. Per la seconda versione il client da
+utilizzare e' bcclient_v2
+
+Esercizio 2 (toup_server)
+Esercizio 3 (toup_server_select)
+Il client e' lo stesso per entrambi gli esercizi (toup_client.c).
+
+Lo script toup_test.sh prende in ingresso un nome di file su cui redirigere
+l'output dei risultati ottenuti lanciando concorrentemente più processi
+client (toup_client).

@@ -1,0 +1,5 @@
+Esercizio1:    prodcons.c
+Esercizio2:    filosofi.c
+Esercizio4:    pipeline.c
+
+testBQueue è un test della coda concorrente implementata in boundedqueue.[ch].

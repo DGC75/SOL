@@ -1,0 +1,8 @@
+Esercizio 2
+
+find /home/ -type f -mmin -2 -exec grep -l "ciao" {} \;
+
+-type f selezione solo i file regolari (-type d selezione le directory)
+-mmin prende un intero positivo o negativo (-2 sta per negli ultimi 2 minuti)
+l'opzione -l di grep stampa il file in cui c'e' stato il match
+
